@@ -87,6 +87,20 @@ class DatabaseSeeder extends Seeder
             'position' => 1,
         ]);
 
+        Product::create([
+            'name' => 'T-shirt',
+            'image' => 'https://i.imgur.com/frhnBT1.png',
+            'type_id' => 1,
+            'price' => '30.00',
+        ]);
+
+        Product::create([
+            'name' => 'Cup',
+            'image' => 'https://img.muji.net/img/item/4547315873913_1260.jpg',
+            'type_id' => 2,
+            'price' => '10.00',
+        ]);
+
         Navigation::create([
             'name' => 'Design symbols',
             'link' => '/design_symbols',
