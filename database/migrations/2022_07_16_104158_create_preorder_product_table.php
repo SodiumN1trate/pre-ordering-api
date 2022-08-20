@@ -19,6 +19,8 @@ class CreatePreorderProductTable extends Migration
             $table->foreignId('product_id')->constrained('products');
             $table->string('symbol');
             $table->string('color');
+            $table->string('size');
+            $table->json('symbol_pos');
             $table->timestamps();
         });
     }

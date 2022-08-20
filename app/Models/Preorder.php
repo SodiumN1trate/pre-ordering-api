@@ -12,8 +12,12 @@ class Preorder extends Model
     protected $fillable = [
         'unique_code',
         'status',
-        'contacts',
+        'firstname',
+        'lastname',
+        'email',
+        'remark',
         'status_id',
+
     ];
 
     public function products() {
@@ -21,6 +25,8 @@ class Preorder extends Model
             ->withPivot([
                 'symbol',
                 'color',
+                'size',
+                'symbol_pos',
             ]);
     }
 }

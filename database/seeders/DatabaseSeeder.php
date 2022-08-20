@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Color;
 use App\Models\Navigation;
+use App\Models\Product;
+use App\Models\Size;
 use App\Models\Status;
+use App\Models\Symbol;
 use App\Models\Type;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -43,10 +47,38 @@ class DatabaseSeeder extends Seeder
             'name' => 'Closed/Delivered',
         ]);
 
+        Product::create([
+            'name' => 'krekls',
+            'image' => 'https://i.imgur.com/frhnBT1.png',
+            'type_id' => 1,
+            'price' => '32.00',
+        ]);
+
+        Product::create([
+            'name' => 'Krūze',
+            'image' => 'https://img.muji.net/img/item/4547315873913_1260.jpg',
+            'type_id' => 2,
+            'price' => '10.00',
+        ]);
+
+        Symbol::create([
+            'image' => 'https://cdn-icons-png.flaticon.com/512/91/91012.png',
+        ]);
+
         Navigation::create([
             'name' => 'Home',
             'link' => '/',
             'position' => 0,
+        ]);
+
+        Color::create([
+           'color' => '#fff',
+            'type_id' => 1,
+        ]);
+
+        Color::create([
+            'color' => '#fff',
+            'type_id' => 2,
         ]);
 
         Navigation::create([
@@ -75,8 +107,33 @@ class DatabaseSeeder extends Seeder
 
         Navigation::create([
             'name' => 'Admin area',
-            'link' => '/admin',
+            'link' => '/admin_area',
             'position' => 5,
+        ]);
+
+        Size::create([
+            'name' => 'S',
+            'type_id' => 1,
+        ]);
+
+        Size::create([
+            'name' => 'M',
+            'type_id' => 1,
+        ]);
+
+        Size::create([
+            'name' => 'L',
+            'type_id' => 1,
+        ]);
+
+        Size::create([
+            'name' => 'XL',
+            'type_id' => 1,
+        ]);
+
+        Size::create([
+            'name' => '250ml',
+            'type_id' => 2,
         ]);
     }
 }

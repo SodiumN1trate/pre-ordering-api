@@ -16,9 +16,9 @@ class ColorController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ColorResource::collection(Color::all());
+        return ColorResource::collection(Color::filter($request->all())->get());
     }
 
     /**

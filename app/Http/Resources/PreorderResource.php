@@ -18,7 +18,10 @@ class PreorderResource extends JsonResource
             'id' => $this->id,
             'unique_code' => $this->unique_code,
             'status' => $this->status_id,
-            'contacts' => $this->contacts,
+            'firstname' => $this->firstname,
+            'lastname' => $this->lastname,
+            'email' => $this->email,
+            'remarks' => $this->remarks,
             'products' => $this->products,
         ];
     }

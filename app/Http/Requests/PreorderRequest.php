@@ -25,7 +25,10 @@ class PreorderRequest extends FormRequest
     {
         return [
             'status' => 'sometimes',
-            'contacts' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required',
+            'remark' => '',
         ];
     }
 }

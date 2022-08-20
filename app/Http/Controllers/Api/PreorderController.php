@@ -7,6 +7,7 @@ use App\Http\Requests\PreorderRequest;
 use App\Http\Resources\PreorderResource;
 use App\Models\Color;
 use App\Models\Preorder;
+use App\Models\Size;
 use App\Models\Symbol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -35,10 +36,19 @@ class PreorderController extends Controller
         $validated['unique_code'] = Str::random(10);
         $validated['status_id'] = 1;
         $preorder = Preorder::create($validated);
+        if (count($request->products) === 0) {
+            return  response()->json([
+                'errors' => [
+                    ['No products found'],
+                ],
+            ], 400);
+        }
         foreach($request->products as $value) {
-            $preorder->products()->attach($value['product_id'], [
-                'symbol' => Symbol::find($value['symbol_id'])->image,
-                'color' => Color::find($value['color_id'])->color,
+            $preorder->products()->attach($value['product'], [
+                'symbol' => Symbol::find($value['symbol'])->image,
+                'color' => Color::find($value['color'])->color,
+                'size' => Size::find($value['size_id'])->name,
+                'symbol_pos' => $value['symbol_pos'],
             ]);
         }
         return  response()->json([
@@ -46,7 +56,7 @@ class PreorderController extends Controller
                 'type' => 'success',
                 'data' => 'Pre-order added',
             ],
-            new PreorderResource($preorder),
+            'data' => new PreorderResource($preorder),
         ]);
     }
 
@@ -78,6 +88,8 @@ class PreorderController extends Controller
             $preorder->products()->attach($value['product_id'], [
                 'symbol' => Symbol::find($value['symbol_id'])->image,
                 'color' => Color::find($value['color_id'])->color,
+                'size' => Size::find($value['size_id'])->name,
+                'symbol_pos' => $value['symbol_pos'],
             ]);
         }
         return  response()->json([

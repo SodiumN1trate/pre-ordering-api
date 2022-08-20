@@ -17,8 +17,10 @@ class CreatePreordersTable extends Migration
             $table->id();
             $table->string('unique_code');
             $table->foreignId('status_id')->constrained('statuses')->default(1);
-            $table->json('contacts');
-            $table->text('remarks')->nullable();
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('email');
+            $table->text('remark')->nullable();
             $table->timestamps();
         });
     }

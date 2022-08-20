@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\SymbolController;
 use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\NavigationController;
 use App\Http\Controllers\Api\PreorderController;
-
+use App\Http\Controllers\Api\SizeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,3 +32,5 @@ Route::resource('symbols', SymbolController::class);
 Route::resource('navigations', NavigationController::class);
 
 Route::resource('preorders', PreorderController::class);
+
+Route::resource('sizes', SizeController::class);
